@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Junk Drawer</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="panel-root" class="panel-root">
+      <p class="panel-title">Junk Drawer</p>
+      <p class="panel-copy">Quick search for Filters, Adjustments, and Layer Styles.</p>
+      <button id="panel-open" class="panel-button" type="button">Open Search</button>
+      <p class="panel-hint">Tip: Option+Space after one-time shortcut setup (see README).</p>
+    </div>
+
+    <dialog id="search-dialog" class="search-dialog">
+      <div class="search-shell" id="search-shell">
+        <input
+          id="search-input"
+          class="search-input"
+          type="text"
+          placeholder="Search filters, adjustments, styles…"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <div id="error-banner" class="error-banner" hidden></div>
+        <ul id="results" class="results" role="listbox"></ul>
+        <div class="footer">
+          <span id="results-meta" class="results-meta"></span>
+          <span class="footer-keys">↑↓ Enter · Esc</span>
+        </div>
+      </div>
+    </dialog>
+
+    <script src="catalog.js"></script>
+    <script src="recents.js"></script>
+    <script src="invoke.js"></script>
+    <script src="search-ui.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

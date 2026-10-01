@@ -1,0 +1,58 @@
+{
+  "manifestVersion": 5,
+  "id": "com.junkdrawer.search",
+  "name": "Junk Drawer",
+  "version": "1.0.0",
+  "main": "index.html",
+  "host": {
+    "app": "PS",
+    "minVersion": "27.0.0"
+  },
+  "entrypoints": [
+    {
+      "type": "command",
+      "id": "openSearch",
+      "label": {
+        "default": "Open Junk Drawer"
+      }
+    },
+    {
+      "type": "panel",
+      "id": "junkDrawerPanel",
+      "label": {
+        "default": "Junk Drawer"
+      },
+      "minimumSize": { "width": 240, "height": 120 },
+      "maximumSize": { "width": 2000, "height": 2000 },
+      "preferredDockedSize": { "width": 260, "height": 160 },
+      "preferredFloatingSize": { "width": 280, "height": 180 },
+      "icons": [
+        {
+          "width": 23,
+          "height": 23,
+          "path": "icons/icon.png",
+          "scale": [1, 2],
+          "theme": ["darkest", "dark", "medium", "lightest", "light"]
+        }
+      ]
+    }
+  ],
+  "icons": [
+    {
+      "width": 23,
+      "height": 23,
+      "path": "icons/icon.png",
+      "scale": [1, 2],
+      "theme": ["darkest", "dark", "medium", "lightest", "light"],
+      "species": ["generic"]
+    }
+  ],
+  "requiredPermissions": {
+    "localFileSystem": "fullAccess",
+    "clipboard": "readAndWrite",
+    "launchProcess": {
+      "schemes": ["file"],
+      "extensions": [".txt"]
+    }
+  }
+}
