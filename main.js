@@ -2,7 +2,7 @@ const { entrypoints } = require("uxp");
 const fs = require("uxp").storage.localFileSystem;
 
 const dialog = document.getElementById("search-dialog");
-const search = createSearchController(dialog);
+const search = createSearchController(dialog, window.invokeEntry);
 
 const TRIGGER_URL = "file:///tmp/junk-drawer-open.trigger";
 let lastTriggerStamp = "";
@@ -28,7 +28,8 @@ async function checkTriggerFile() {
 
 function startTriggerPolling() {
   if (pollTimer) return;
-  pollTimer = setInterval(checkTriggerFile, 300);
+  // 50ms keeps shortcut → search snappy without AppleScript menu clicking.
+  pollTimer = setInterval(checkTriggerFile, 50);
   checkTriggerFile();
 }
 

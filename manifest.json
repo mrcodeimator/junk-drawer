@@ -22,10 +22,10 @@
       "label": {
         "default": "Junk Drawer"
       },
-      "minimumSize": { "width": 240, "height": 120 },
+      "minimumSize": { "width": 280, "height": 160 },
       "maximumSize": { "width": 2000, "height": 2000 },
-      "preferredDockedSize": { "width": 260, "height": 160 },
-      "preferredFloatingSize": { "width": 280, "height": 180 },
+      "preferredDockedSize": { "width": 300, "height": 200 },
+      "preferredFloatingSize": { "width": 520, "height": 420 },
       "icons": [
         {
           "width": 23,

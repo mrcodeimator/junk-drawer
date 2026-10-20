@@ -4,3 +4,5 @@ node_modules/
 .uxp/
 dist/
 *.ccx
+.agents/
+skills-lock.json
