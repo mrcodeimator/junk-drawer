@@ -48,11 +48,6 @@
     }
   ],
   "requiredPermissions": {
-    "localFileSystem": "fullAccess",
-    "clipboard": "readAndWrite",
-    "launchProcess": {
-      "schemes": ["file"],
-      "extensions": [".txt"]
-    }
+    "localFileSystem": "fullAccess"
   }
 }

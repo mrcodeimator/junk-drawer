@@ -4,7 +4,14 @@ const fs = require("uxp").storage.localFileSystem;
 const dialog = document.getElementById("search-dialog");
 const search = createSearchController(dialog, window.invokeEntry);
 
-const TRIGGER_URL = "file:///tmp/junk-drawer-open.trigger";
+// Must match the path written by scripts/Junk Drawer.jsx (HOME on macOS, USERPROFILE on Windows).
+function triggerUrl() {
+  const home = require("os").homedir().replace(/\\/g, "/").replace(/\/+$/, "");
+  const prefix = home.startsWith("/") ? "file://" : "file:///";
+  return `${prefix}${home}/.junk-drawer-open.trigger`;
+}
+
+const TRIGGER_URL = triggerUrl();
 let lastTriggerStamp = "";
 let pollTimer = null;
 

@@ -7,45 +7,45 @@ A Spotlight-style search box opens from a shortcut. Pick an item to open Photosh
 ## Requirements
 
 - Adobe Photoshop **27.0+** (tested target: 27.10.0)
-- macOS (shortcut helper uses a Scripts shortcut + a tiny trigger file)
+- macOS or Windows
+- Creative Cloud desktop app (installs the `.ccx` package)
 
-## Install the plugin
+## Install (release package)
 
-1. Install [Adobe UXP Developer Tools](https://developer.adobe.com/photoshop/uxp/guides/devtool/) (or load via your usual UXP workflow).
-2. Add this folder as a plugin and **Load**.
+1. Download `com.junkdrawer.search.ccx` and `Junk Drawer.jsx` from the release.
+2. Double-click `com.junkdrawer.search.ccx`. Creative Cloud asks to confirm installing a plugin from outside the Marketplace — accept.
 3. In Photoshop, open **Plugins → Junk Drawer** once and leave the panel open for the session (keeps the shortcut watcher alive).
 4. Confirm **Plugins → Junk Drawer → Open Junk Drawer** works.
+
+To uninstall: Creative Cloud desktop app → **Stock & Marketplace → Plugins → Manage plugins**.
+
+## Install (development)
+
+1. Install [Adobe UXP Developer Tools](https://developer.adobe.com/photoshop/uxp/guides/devtool/).
+2. Add this folder as a plugin and **Load**.
 
 ## One-time shortcut setup
 
 UXP plugins cannot register their own global shortcuts, so Junk Drawer uses a tiny Photoshop script.
 
 1. Copy [`scripts/Junk Drawer.jsx`](scripts/Junk%20Drawer.jsx) into Photoshop’s Scripts folder:
-   - Typical path: `/Applications/Adobe Photoshop 2026/Presets/Scripts/`
+   - macOS: `/Applications/Adobe Photoshop 2026/Presets/Scripts/`
+   - Windows: `C:\Program Files\Adobe\Adobe Photoshop 2026\Presets\Scripts\` (needs admin rights)
    - Version folder name may differ for your install.
 2. Quit and reopen Photoshop.
 3. Confirm **File → Scripts → Junk Drawer** appears.
-4. **Edit → Keyboard Shortcuts…** (⌥⇧⌘K).
+4. **Edit → Keyboard Shortcuts…** (⌥⇧⌘K on macOS, Alt+Shift+Ctrl+K on Windows).
 5. Find **File → Scripts → Junk Drawer** and assign a free shortcut.
 
 ### Recommended shortcut
 
-Use **Control+Shift+Space** (⌃⇧Space).
+Use **Control+Shift+Space**.
 
-**Option+Space usually will not work.** macOS often owns ⌥Space / related Space combos for Input Sources (or other apps do). Photoshop then refuses the binding or nothing happens.
-
-If you specifically want **⌥ Space**:
-
-1. Open **System Settings → Keyboard → Keyboard Shortcuts → Input Sources**.
-2. Turn off / clear shortcuts that use Space.
-3. Also check Spotlight, Raycast, Alfred, Keyboard Maestro, etc.
-4. Re-open Photoshop’s Keyboard Shortcuts and try assigning ⌥ Space again.
+On macOS, **Option+Space usually will not work** — macOS often owns ⌥Space for Input Sources (or Spotlight, Raycast, Alfred, etc. do), so Photoshop refuses the binding. Clear it in **System Settings → Keyboard → Keyboard Shortcuts → Input Sources** if you want it.
 
 ### How the helper works
 
-The script only writes `/tmp/junk-drawer-open.trigger`. The loaded plugin notices that within ~50ms and opens search.
-
-There is no AppleScript menu-clicking anymore (that path was the slow part).
+The script only writes a timestamp to `.junk-drawer-open.trigger` in your home folder (`~` on macOS, `%USERPROFILE%` on Windows). The loaded plugin notices that within ~50ms and opens search.
 
 ## Use
 
@@ -58,6 +58,10 @@ There is no AppleScript menu-clicking anymore (that path was the slow part).
 
 If no document is open, search still opens. Running a command shows an error until a document exists.
 
+## Building a release
+
+Run `./scripts/package.sh`. It writes `dist/com.junkdrawer.search.ccx` (plugin files zipped with `manifest.json` at the root) and copies `Junk Drawer.jsx` next to it. Alternatively use **Package** in UXP Developer Tools.
+
 ## Project layout
 
 - `manifest.json` — UXP plugin manifest (PS 27+)
@@ -65,7 +69,8 @@ If no document is open, search still opens. Running a command shows an error unt
 - `search-ui.js` — search overlay behavior
 - `invoke.js` — native dialog invocation via `batchPlay` + `executeAsModal`
 - `recents.js` — recent items (max 5)
-- `scripts/Junk Drawer.jsx` — fast shortcut helper
+- `scripts/Junk Drawer.jsx` — shortcut helper
+- `scripts/package.sh` — builds the `.ccx`
 
 ## Notes
 
