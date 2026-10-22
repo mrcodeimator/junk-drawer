@@ -7,10 +7,55 @@
   </head>
   <body>
     <div id="panel-root" class="panel-root">
-      <p class="panel-title">Junk Drawer</p>
+      <div class="panel-header">
+        <p class="panel-title">Junk Drawer</p>
+        <span class="panel-badge">v0.9.1</span>
+      </div>
       <p class="panel-copy">Quick search for Filters, Adjustments, and Layer Styles.</p>
-      <button id="panel-open" class="panel-button" type="button">Open Search</button>
-      <p class="panel-hint">Tip: leave this panel open, then use your Scripts shortcut (see README). Control+Shift+Space works well on macOS and Windows.</p>
+
+      <div class="panel-actions">
+        <button id="panel-open" class="panel-button" type="button">Open Search</button>
+        <button id="panel-setup-shortcut" class="panel-button panel-button-secondary" type="button">
+          Set Up Shortcut…
+        </button>
+      </div>
+
+      <div id="setup-card" class="setup-card" hidden>
+        <div class="setup-header">
+          <span class="setup-title">Shortcut Setup Walkthrough</span>
+          <button id="setup-close" class="setup-close" type="button">✕</button>
+        </div>
+        <p id="setup-status" class="setup-status"></p>
+        <ol class="setup-steps">
+          <li>
+            Click <strong>Save Shortcut File…</strong> below and save
+            <code>Junk Drawer.jsx</code> into your Photoshop
+            <code>Presets/Scripts</code> folder.
+          </li>
+          <li><strong>Restart Photoshop</strong> so it loads the new script.</li>
+          <li>
+            Click <strong>Open Keyboard Shortcuts</strong> (or go to
+            <code>Edit → Keyboard Shortcuts…</code>), expand
+            <strong>File → Scripts → Junk Drawer</strong>, and assign
+            <code>Ctrl+Shift+Space</code>.
+          </li>
+        </ol>
+        <div class="setup-buttons">
+          <button id="setup-install-btn" class="panel-button panel-button-small" type="button">
+            1. Save Shortcut File…
+          </button>
+          <button id="setup-kbsc-btn" class="panel-button panel-button-secondary panel-button-small" type="button">
+            2. Open Keyboard Shortcuts
+          </button>
+        </div>
+      </div>
+
+      <div class="panel-footer">
+        <span id="shortcut-pill" class="shortcut-pill">Keep panel open for shortcut</span>
+        <sp-link id="feedback-link" class="feedback-link" quiet href="https://forms.gle/HXWdUyUf8LyiaFfK9">
+          Send Feedback
+        </sp-link>
+      </div>
     </div>
 
     <dialog id="search-dialog" class="search-dialog">

@@ -7,6 +7,7 @@
   --text: #f0f0f0;
   --muted: #9a9a9a;
   --accent: #4c8bf5;
+  --success: #66bb6a;
   --error: #e57373;
   --radius: 10px;
   font-family: "Adobe Clean", "Segoe UI", sans-serif;
@@ -23,16 +24,34 @@ body {
 }
 
 .panel-root {
-  padding: 14px;
+  padding: 12px 14px;
   display: flex;
   flex-direction: column;
   gap: 8px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .panel-title {
   margin: 0;
   font-size: 14px;
   font-weight: 600;
+}
+
+.panel-badge {
+  font-size: 10px;
+  color: var(--muted);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2px 6px;
 }
 
 .panel-copy,
@@ -43,19 +62,143 @@ body {
   line-height: 1.4;
 }
 
+.panel-actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
 .panel-button {
   align-self: flex-start;
   border: 1px solid var(--border);
   background: var(--accent);
   color: #fff;
   border-radius: 6px;
-  padding: 8px 12px;
+  padding: 7px 11px;
   font-size: 12px;
   cursor: pointer;
 }
 
 .panel-button:hover {
-  filter: brightness(1.05);
+  filter: brightness(1.06);
+}
+
+.panel-button-secondary {
+  background: var(--bg-elevated);
+  color: var(--text);
+}
+
+.panel-button-secondary:hover {
+  background: var(--bg-hover);
+}
+
+.panel-button-small {
+  padding: 5px 9px;
+  font-size: 11px;
+}
+
+.setup-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.setup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.setup-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.setup-close {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 12px;
+  cursor: pointer;
+  padding: 2px 4px;
+}
+
+.setup-close:hover {
+  color: var(--text);
+}
+
+.setup-status {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.35;
+  color: var(--success);
+}
+
+.setup-status.is-error {
+  color: var(--error);
+}
+
+.setup-steps {
+  margin: 0;
+  padding-left: 16px;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.setup-steps li {
+  margin-bottom: 4px;
+}
+
+.setup-steps strong {
+  color: var(--text);
+}
+
+.setup-steps code {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+.setup-buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.panel-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 6px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+}
+
+.shortcut-pill {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.shortcut-pill.is-ready {
+  color: var(--success);
+}
+
+.feedback-link {
+  font-size: 11px;
+  cursor: pointer;
 }
 
 /*
