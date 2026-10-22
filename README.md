@@ -27,7 +27,7 @@ A Spotlight-style search box opens from a shortcut. Pick an item to open Photosh
 
 You can set up your keyboard shortcut directly from the **Junk Drawer** panel inside Photoshop:
 
-![Step 1: Junk Drawer Panel Shortcut Walkthrough](docs/images/install-step-1-panel.svg)
+![Step 1: Junk Drawer Panel Shortcut Walkthrough](docs/images/install-step-1-panel.png)
 
 1. In the **Junk Drawer** panel, click **Set Up Shortcut…**
 2. Click **1. Save Shortcut File…**
@@ -39,7 +39,7 @@ You can set up your keyboard shortcut directly from the **Junk Drawer** panel in
 3. **Quit and reopen Photoshop** so Photoshop detects the new script.
 4. Back in the Junk Drawer panel, click **2. Open Keyboard Shortcuts** (or go to **Edit → Keyboard Shortcuts…** in the top menu).
 
-![Step 2: Assign Shortcut in Photoshop](docs/images/install-step-2-shortcut.svg)
+![Step 2: Assign Shortcut in Photoshop](docs/images/install-step-2-shortcut.png)
 
 5. In the **Keyboard Shortcuts** window:
    - Expand **File → Scripts** and click **Junk Drawer**.
